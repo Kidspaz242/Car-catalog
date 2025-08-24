@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Searchable Catalog</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    #searchBar {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    .product {
+      border: 1px solid #ddd;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    .product img {
+      width: 120px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+    .product h3 {
+      margin: 0;
+      font-size: 1.1em;
+    }
+  </style>
+</head>
+<body>
+  <h2>Car Catalog</h2>
+  <input type="text" id="searchBar" placeholder="Search cars...">
+
+  <div id="catalog">
+    <div class="product">
+      <img src="https://via.placeholder.com/120x80?text=Toyota" alt="Toyota">
+      <div>
+        <h3>Toyota Corolla</h3>
+        <p>Reliable sedan, great fuel efficiency.</p>
+      </div>
+    </div>
+    <div class="product">
+      <img src="https://via.placeholder.com/120x80?text=Honda" alt="Honda">
+      <div>
+        <h3>Honda Civic</h3>
+        <p>Sporty and efficient compact car.</p>
+      </div>
+    </div>
+    <div class="product">
+      <img src="https://via.placeholder.com/120x80?text=Jeep" alt="Jeep">
+      <div>
+        <h3>Jeep Wrangler</h3>
+        <p>Off-road ready SUV with 4x4 capability.</p>
+      </div>
+    </div>
+    <div class="product">
+      <img src="https://via.placeholder.com/120x80?text=BMW" alt="BMW">
+      <div>
+        <h3>BMW 3 Series</h3>
+        <p>Luxury sedan with premium features.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const searchBar = document.getElementById("searchBar");
+    const products = document.querySelectorAll(".product");
+
+    searchBar.addEventListener("keyup", () => {
+      const searchText = searchBar.value.toLowerCase();
+      products.forEach(product => {
+        const name = product.querySelector("h3").textContent.toLowerCase();
+        product.style.display = name.includes(searchText) ? "flex" : "none";
+      });
+    });
+  </script>
+</body>
+</html>
